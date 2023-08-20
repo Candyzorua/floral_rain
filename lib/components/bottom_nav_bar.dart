@@ -18,6 +18,7 @@ class BottomNavBar extends StatelessWidget {
           tabBackgroundColor: Colors.grey.shade100,
           activeColor: Colors.green[700],
           haptic: true,
+          selectedIndex: 1,
           tabs: [
             GButton(icon: Icons.leaderboard, text: 'stats', textStyle: BOTTOM_NAVBAR_STYLE,),
             GButton(icon: Icons.play_arrow_rounded, text: 'play', textStyle: BOTTOM_NAVBAR_STYLE,)

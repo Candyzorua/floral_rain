@@ -23,8 +23,7 @@ class ShowBottomSheetExample extends StatelessWidget {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       (BuildContext context) {
         return Container(
-          decoration: const BoxDecoration(
-              color: Colors.white),
+          decoration: const BoxDecoration(color: Colors.white),
           height: 200,
           child: Center(
             child: Column(
@@ -51,11 +50,16 @@ class ShowBottomSheetExample extends StatelessWidget {
                       TextButton(
                         style: TextButton.styleFrom(
                           foregroundColor: Colors.white,
-                          padding: const EdgeInsets.fromLTRB(60.0, 15.0, 60.0, 20.0),
+                          padding:
+                              const EdgeInsets.fromLTRB(60.0, 15.0, 60.0, 20.0),
                           textStyle: const TextStyle(fontSize: 20),
                         ),
-                        onPressed: () {},
-                        child: Text('start game', style: START_GAME_LARGE_TEXT_STYLE),
+                        onPressed: () {
+                          // Pushing a named route
+                          Navigator.of(context).pushNamed('/in-game');
+                        },
+                        child: Text('start game',
+                            style: START_GAME_LARGE_TEXT_STYLE),
                       ),
                     ],
                   ),
