@@ -8,10 +8,17 @@ import 'package:floral_rain/state/game_state.dart';
 import 'package:riverpod/riverpod.dart';
 
 class GameNotifier extends StateNotifier<AsyncValue<GameState>> {
-  // We initialize the list of todos to an empty list
+  // initialize
   GameNotifier(): super(AsyncData(testGameState));
+
   final HttpService httpService = HttpService();
-  AsyncValue<GameState> prevGameState = AsyncData(testGameState);
+  late AsyncValue<GameState> prevGameState;
+
+  // take a random word and put it into the game state
+  Future<void> initialize() async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() => httpService.getRandom("simplified", testGameState));
+  }
 
   // submit phrase
   Future<void> submitPhrase(String text, String type, GameState gs) async {
@@ -23,11 +30,7 @@ class GameNotifier extends StateNotifier<AsyncValue<GameState>> {
       state = const AsyncValue.loading();
       state = AsyncValue.data(await httpService.getPhraseItem(text, type, gs));
     } catch (e) {
-      if (e.toString() == 'No word with matching parameters found.') {
-        state = AsyncData(prevGameState.value!.copyWith(isInvalidPhrase: true));
-      } else {
-        state = AsyncData(prevGameState.value!.copyWith(isUnknownError: true));
-      }
+      state = AsyncData(prevGameState.value!.copyWith(error: e));
     } finally {
       // pass
     }
@@ -35,6 +38,6 @@ class GameNotifier extends StateNotifier<AsyncValue<GameState>> {
 }
 
 final gameNotifierProvider =
-StateNotifierProvider<GameNotifier, AsyncValue<GameState>>((ref) {
+    StateNotifierProvider<GameNotifier, AsyncValue<GameState>>((ref) {
   return GameNotifier();
 });

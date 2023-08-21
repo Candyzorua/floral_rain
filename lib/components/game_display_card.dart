@@ -2,6 +2,7 @@ import 'package:floral_rain/state/game_provider.dart';
 import 'package:floral_rain/state/game_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../const.dart';
 import 'definitions.dart';
 
@@ -30,9 +31,18 @@ class GameDisplayCard extends ConsumerWidget {
                         Radius.circular(25),
                       )),
                       child: ListTile(
-                          title: Text(
-                            gs.previous.simplified,
-                            style: GAME_LARGE_TEXT_STYLE,
+                          title: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                gs.previous.simplified,
+                                style: GAME_LARGE_TEXT_STYLE,
+                              ),
+                              Text(
+                                gs.previous.pinyin.toLowerCase(),
+                                style: GoogleFonts.notoSans(textStyle: GAME_PINYIN_TEXT_STYLE),
+                              )
+                            ],
                           ),
                           subtitle: Definitions(gs.previous.definitions),
                           contentPadding: const EdgeInsets.symmetric(

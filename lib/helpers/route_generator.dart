@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-
 import '../pages/home_page.dart';
 import '../pages/in_game_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    Object? args = settings.arguments;
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => const HomePage());

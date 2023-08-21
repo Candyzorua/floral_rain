@@ -15,14 +15,14 @@ class InvalidPhraseText extends ConsumerWidget {
     return gameState.when(
         loading: () => const SizedBox.shrink(), // empty view
         error: (error, stack) => const SizedBox.shrink(),
-        data: (gs) => gs.isInvalidPhrase
+        data: (gs) => gs.error != null
             ? Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Invalid phrase.', style: GAME_ERROR_TEXT_STYLE),
+                    Text(gs.error.toString(), style: GAME_ERROR_TEXT_STYLE),
                   ],
                 ),
               )

@@ -1,5 +1,8 @@
 import 'package:floral_rain/const.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../state/game_provider.dart';
 
 class StartGamePage extends StatelessWidget {
   const StartGamePage({super.key});
@@ -47,20 +50,7 @@ class ShowBottomSheetExample extends StatelessWidget {
                           ),
                         ),
                       ),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          padding:
-                              const EdgeInsets.fromLTRB(60.0, 15.0, 60.0, 20.0),
-                          textStyle: const TextStyle(fontSize: 20),
-                        ),
-                        onPressed: () {
-                          // Pushing a named route
-                          Navigator.of(context).pushNamed('/in-game');
-                        },
-                        child: Text('start game',
-                            style: START_GAME_LARGE_TEXT_STYLE),
-                      ),
+                      const StartGameButton()
                     ],
                   ),
                 ),
@@ -88,3 +78,26 @@ class ShowBottomSheetExample extends StatelessWidget {
     );
   }
 }
+
+class StartGameButton extends ConsumerWidget {
+  const StartGameButton({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return TextButton(
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.white,
+        padding:
+        const EdgeInsets.fromLTRB(60.0, 15.0, 60.0, 20.0),
+        textStyle: const TextStyle(fontSize: 20),
+      ),
+      onPressed: () {
+        Navigator.of(context).pushNamed('/in-game');
+        ref.read(gameNotifierProvider.notifier).initialize();
+      },
+      child: Text('start game',
+          style: START_GAME_LARGE_TEXT_STYLE),
+    );
+  }
+}
+

@@ -5,18 +5,16 @@ import 'package:flutter/cupertino.dart';
 class GameState {
   final PhraseItem previous;
   final int score;
-  final bool isInvalidPhrase;
-  final bool isUnknownError;
+  final Object? error;
 
-  const GameState({required this.previous, required this.score, required this.isInvalidPhrase, required this.isUnknownError});
+  const GameState({required this.previous, required this.score, required this.error});
 
   // Since GameState is immutable, this method allows cloning with different content
-  GameState copyWith({PhraseItem? previous, int? score, bool? isInvalidPhrase, bool? isUnknownError}) {
+  GameState copyWith({PhraseItem? previous, int? score, Object? error}) {
     return GameState(
       previous: previous ?? this.previous,
       score: score ?? this.score,
-      isInvalidPhrase: isInvalidPhrase ?? this.isInvalidPhrase,
-      isUnknownError: isUnknownError ?? this.isUnknownError
+      error: error
     );
   }
 }

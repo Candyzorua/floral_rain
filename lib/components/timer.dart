@@ -1,44 +1,61 @@
 import 'dart:async';
+import 'package:floral_rain/const.dart';
+import 'package:floral_rain/pages/game_over_page.dart';
+import 'package:floral_rain/state/game_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FloralTimer extends StatefulWidget {
+import '../state/game_state.dart';
+
+class FloralTimer extends ConsumerStatefulWidget {
   const FloralTimer({super.key});
 
   @override
-  State<FloralTimer> createState() => _TimerState();
+  ConsumerState<FloralTimer> createState() => _FloralTimerState();
 }
 
-class _TimerState extends State<FloralTimer> {
+class _FloralTimerState extends ConsumerState<FloralTimer> {
   // timer
   int seconds = maxSeconds;
   Timer? timer;
-  static const maxSeconds = 60;
+  static const maxSeconds = 10;
 
   @override
   Widget build(BuildContext context) {
-    return CircularProgressIndicator(
-      value: seconds / maxSeconds,
+    ref.listen(
+      gameNotifierProvider,
+      (previous, next) {
+        next.whenData((value) => {
+              if (value.error == null) {_resetTimer()}
+            });
+      },
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _startTimer();
+    return SizedBox(
+      width: 20,
+      height: 20,
+      child: CircularProgressIndicator(
+        strokeWidth: 10.0,
+        color: STANDARD_PINK,
+        value: seconds / maxSeconds,
+      ),
+    );
   }
 
   // timer helper functions
 
   void _startTimer() {
     timer = Timer.periodic(
-        const Duration(milliseconds: 100),
-            (_) => setState(() {
-          if (seconds > 0) {
-            seconds--;
-          } else {
-            _stopTimer();
-          }
-        }));
+        const Duration(seconds: 1),
+        (_) => {
+              if (seconds > 0)
+                {
+                  setState(() {
+                    seconds--;
+                  })
+                }
+              else
+                {_navigateToGameOverPage()}
+            });
   }
 
   void _stopTimer() {
@@ -46,8 +63,20 @@ class _TimerState extends State<FloralTimer> {
   }
 
   void _resetTimer() {
+    _stopTimer();
     setState(() {
       seconds = maxSeconds;
     });
+    _startTimer();
+  }
+
+  void _navigateToGameOverPage() {
+    _stopTimer();
+    AsyncValue<GameState> currGameState = ref.read(gameNotifierProvider);
+    currGameState.whenData((value) => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => GameOverPage(score: value.score)),
+        ));
   }
 }

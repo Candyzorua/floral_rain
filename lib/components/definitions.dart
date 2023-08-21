@@ -8,7 +8,12 @@ class Definitions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: definitions.map((e){ return Text('- ${e}');}).toList()
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: definitions.map((e){ return Text('- $e');}).toList()
+        ),
+      ],
     );
   }
 }
