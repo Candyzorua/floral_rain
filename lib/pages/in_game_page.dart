@@ -34,7 +34,7 @@ class _InGamePageState extends State<InGamePage> {
                 )),
             Expanded(
                 flex: 8,
-                child: Column(
+                child: ListView(
                   children: [
                     const GameDisplayCard('previous'),
                     GameInputCard('current'),

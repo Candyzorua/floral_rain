@@ -22,7 +22,12 @@ class InvalidPhraseText extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(gs.error.toString(), style: GAME_ERROR_TEXT_STYLE),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(gs.error.toString(), style: GAME_ERROR_TEXT_STYLE),
+                      ],
+                    ),
                   ],
                 ),
               )

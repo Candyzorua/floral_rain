@@ -21,7 +21,7 @@ class HttpService {
       if (res.body.isNotEmpty) {
         dynamic body = jsonDecode(res.body);
         PhraseItem phraseItem = PhraseItem.fromJson(body);
-        if (getPinyinOfFirstWord(phraseItem) == getPinyinOfLastWord(gameState.previous)) {
+        if (isPinyinOverlap([phraseItem, gameState.previous])) {
           return gameState.copyWith(previous: phraseItem,
               score: gameState.score + 1,
               error: null);
@@ -52,15 +52,13 @@ class HttpService {
     }
   }
 
-  /// Helper for extracting the pinyin of the last word in the phrase item
-  String getPinyinOfFirstWord(PhraseItem pi) {
-    List<String> splitPinyin = pi.pinyin.split(' ');
-    return splitPinyin.first.toLowerCase();
-  }
-
-  /// Helper for extracting the pinyin of the last word in the phrase item
-  String getPinyinOfLastWord(PhraseItem pi) {
-    List<String> splitPinyin = pi.pinyin.split(' ');
-    return splitPinyin.last.toLowerCase();
+  /// Helper for indicating if two phrase items have at least one word with same pinyin
+  bool isPinyinOverlap(List<PhraseItem> piList) {
+    Iterable<List<String>> lists = piList.map((pi) => pi.pinyin.toLowerCase().split(' '));
+    final commonElements =
+    lists.fold<Set>(
+        lists.first.toSet(),
+            (a, b) => a.intersection(b.toSet()));
+    return commonElements.isNotEmpty;
   }
 }

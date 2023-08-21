@@ -52,16 +52,6 @@ void main() {
     }
   });
 
-  test('getPinyinOfFirstWord should return correct value', () async {
-    expect(httpService.getPinyinOfFirstWord(testPhraseItem), "měi");
-    expect(httpService.getPinyinOfFirstWord(testPhraseItem2), "měi");
-    expect(httpService.getPinyinOfFirstWord(testPhraseItem3), "zhòu");
-  });
-
-  test('pinyin should match', () async {
-    expect(httpService.getPinyinOfFirstWord(testPhraseItem4), httpService.getPinyinOfLastWord(testPhraseItem2));
-  });
-
   test('game state should be updated', () async {
     try {
       GameState newGameState = await httpService.getRandom(
@@ -70,5 +60,9 @@ void main() {
     } catch(e) {
       fail("should not have error");
     }
+  });
+
+  test('pinyin should overlap', () async {
+    expect(httpService.isPinyinOverlap([testPhraseItem, testPhraseItem2]), true);
   });
 }
