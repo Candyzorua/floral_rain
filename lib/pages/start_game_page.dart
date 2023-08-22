@@ -33,25 +33,31 @@ class ShowBottomSheetExample extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(30),
-                  child: Stack(
-                    children: <Widget>[
-                      Positioned.fill(
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: <Color>[
-                                Colors.pink,
-                                Colors.purple,
-                                Colors.blue,
-                              ],
+                Expanded(
+                  flex: 11,
+                    child: Image.asset('assets/floral_rain_logo_black.png')),
+                Expanded(
+                  flex: 6,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned.fill(
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: <Color>[
+                                  Colors.pink,
+                                  Colors.purple,
+                                  Colors.blue,
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      const StartGameButton()
-                    ],
+                        const StartGameButton()
+                      ],
+                    ),
                   ),
                 ),
               ],

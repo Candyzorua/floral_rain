@@ -7,7 +7,7 @@ class GameOverPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _goBackTwoPages() {
+    void returnToHomePage() {
       Navigator.of(context).pushNamed('/');
     }
 
@@ -50,7 +50,7 @@ class GameOverPage extends StatelessWidget {
                         child: FloatingActionButton(
                             elevation: 0,
                             backgroundColor: STANDARD_GREEN,
-                            onPressed: _goBackTwoPages,
+                            onPressed: returnToHomePage,
                             child: const Icon(Icons.arrow_right_alt_rounded)),
                       ),
                     ],

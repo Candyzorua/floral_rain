@@ -1,3 +1,4 @@
+import 'package:floral_rain/components/loading_card.dart';
 import 'package:floral_rain/state/game_provider.dart';
 import 'package:floral_rain/state/game_state.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,8 @@ class GameDisplayCard extends ConsumerWidget {
     AsyncValue<GameState> gameState = ref.watch(gameNotifierProvider);
 
     return gameState.when(
-        loading: () => const CircularProgressIndicator(),
-        error: (error, stack) => const Text('Oops, something unexpected happened'),
+        loading: () => const LoadingOrErrorCard(CircularProgressIndicator()),
+        error: (error, stack) => const LoadingOrErrorCard(Text('Oops, something unexpected happened')),
         data: (gs) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: Column(

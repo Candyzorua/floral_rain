@@ -40,6 +40,7 @@ class GameInputCard extends ConsumerWidget {
                       child: const Icon(Icons.arrow_right_alt_rounded),
                       onPressed: () {
                         ref.read(gameNotifierProvider.notifier).submitPhrase(textEditingController.text, "simplified", gameState.value!);
+                        textEditingController.clear();
                       }),
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 15, horizontal: 20.0))),

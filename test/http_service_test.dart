@@ -38,8 +38,8 @@ void main() {
   final httpService = HttpService();
 
   test('getPhrase should return correct value', () async {
-    GameState result = await httpService.getPhraseItem("美妙", "simplified", initialGameState);
-    expect(result.score, 1);
+    GameState result = await httpService.getPhraseItem("每天", "simplified", initialGameState);
+    expect(result.score, 4);
   });
 
   test('getPhrase should return null', () async {
@@ -64,5 +64,17 @@ void main() {
 
   test('pinyin should overlap', () async {
     expect(httpService.isPinyinOverlap([testPhraseItem, testPhraseItem2]), true);
+  });
+
+  test('pinyin should not overlap', () async {
+    expect(httpService.isPinyinOverlap([testPhraseItem2, testPhraseItem3]), false);
+  });
+
+  test('words should overlap', () async {
+    expect(httpService.isWordsOverlap([testPhraseItem, testPhraseItem2]), true);
+  });
+
+  test('words should not overlap', () async {
+    expect(httpService.isWordsOverlap([testPhraseItem2, testPhraseItem3]), false);
   });
 }

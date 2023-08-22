@@ -31,10 +31,10 @@ class _StatsPageState extends State<StatsPage> {
               padding: const EdgeInsets.all(25.0),
               child: ListView(
                 children: [
-                  const StatsCard('highest score', '40',
+                  const StatsCard('highest score', '141',
                       Icons.trending_up_rounded, Colors.pink),
                   const SizedBox(height: 10),
-                  const StatsCard('longest word', '30', Icons.lightbulb_rounded,
+                  const StatsCard('longest word', '爱不释手', Icons.lightbulb_rounded,
                       Colors.pinkAccent),
                   const SizedBox(height: 10),
                   StatsCard('rounds played', '20', Icons.av_timer_rounded,

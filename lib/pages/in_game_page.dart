@@ -1,5 +1,6 @@
 import 'package:floral_rain/components/game_display_card.dart';
 import 'package:floral_rain/components/invalid_phrase_text.dart';
+import 'package:floral_rain/components/return_to_home_page_button.dart';
 import 'package:floral_rain/components/score_card.dart';
 import 'package:floral_rain/const.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class InGamePage extends StatefulWidget {
 class _InGamePageState extends State<InGamePage> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Container(
         color: BGCOLOR,
@@ -41,6 +43,9 @@ class _InGamePageState extends State<InGamePage> {
                     const InvalidPhraseText(),
                   ],
                 )),
+            const Expanded(
+                flex: 2,
+                child: ReturnToHomePageButton())
           ],
         ),
       ),

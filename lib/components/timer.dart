@@ -18,7 +18,7 @@ class _FloralTimerState extends ConsumerState<FloralTimer> {
   // timer
   int seconds = maxSeconds;
   Timer? timer;
-  static const maxSeconds = 10;
+  static const maxSeconds = TIME_LIMIT_SECONDS;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,10 @@ class _FloralTimerState extends ConsumerState<FloralTimer> {
       gameNotifierProvider,
       (previous, next) {
         next.whenData((value) => {
-              if (value.error == null) {_resetTimer()}
+              if (value.stopTimer ?? false)
+                {_stopTimer()}
+              else if (value.error == null)
+                {_resetTimer()}
             });
       },
     );

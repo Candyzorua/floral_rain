@@ -50,5 +50,9 @@ const TextStyle(fontSize: 28, fontWeight: FontWeight.w700, fontFamily: 'ZenKakuG
 TextStyle GAME_OVER_LIGHT_TEXT_STYLE =
 const TextStyle(fontSize: 23, fontWeight: FontWeight.w400, fontFamily: 'ZenKakuGothicAntique', color: Colors.white);
 
-PhraseItem testPhraseItem = const PhraseItem(definitions: ["test1", "test2"], simplified: "试", traditional: "试", pinyin: "shì", id: "test");
-GameState testGameState = GameState(previous: testPhraseItem, score: 0, error: null);
+PhraseItem INITIAL_PHRASE_ITEM = const PhraseItem(definitions: [], simplified: "", traditional: "", pinyin: "", id: "");
+GameState INITIAL_GAME_STATE = GameState(previous: INITIAL_PHRASE_ITEM, score: 0, error: null);
+
+// game settings
+const MIN_PHRASE_LENGTH = 2;
+const TIME_LIMIT_SECONDS = 40;

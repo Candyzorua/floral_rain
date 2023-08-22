@@ -9,7 +9,7 @@ import 'package:riverpod/riverpod.dart';
 
 class GameNotifier extends StateNotifier<AsyncValue<GameState>> {
   // initialize
-  GameNotifier(): super(AsyncData(testGameState));
+  GameNotifier(): super(AsyncData(INITIAL_GAME_STATE));
 
   final HttpService httpService = HttpService();
   late AsyncValue<GameState> prevGameState;
@@ -17,7 +17,7 @@ class GameNotifier extends StateNotifier<AsyncValue<GameState>> {
   // take a random word and put it into the game state
   Future<void> initialize() async {
     state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() => httpService.getRandom("simplified", testGameState));
+    state = await AsyncValue.guard(() => httpService.getRandom("simplified", INITIAL_GAME_STATE));
   }
 
   // submit phrase
@@ -34,6 +34,12 @@ class GameNotifier extends StateNotifier<AsyncValue<GameState>> {
     } finally {
       // pass
     }
+  }
+
+  // stop timer and revert to initial game state
+  Future<void> stopGameState() async {
+    state = const AsyncValue.loading();
+    state = AsyncValue.data(INITIAL_GAME_STATE.copyWith(stopTimer: true));
   }
 }
 
