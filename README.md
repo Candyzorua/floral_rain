@@ -2,7 +2,7 @@
 
 A Mandarin word game for Android and iOS designed to help Mandarin learners grow their vocabulary and improve their pinyin in a fun way.
 
-Players chain phrases containing different words with identical pinyin to score points alongside a ticking timer. Successfully submitting a phrase refreshes the timer. To make things exciting, longer phrases grant exponentially more points!
+Players chain phrases containing different words with identical pinyin to score points alongside a ticking timer. Successfully submitting a phrase refreshes the timer. To make things exciting, longer phrases grant more points!
 
 Please find the repo for the backend API [here](https://github.com/Candyzorua/translator-server).
 
@@ -20,14 +20,10 @@ Please find the repo for the backend API [here](https://github.com/Candyzorua/tr
 Taken using the iPhone 14 simulator.
 
 ##### All features
-<video width="320" height="240" controls>
-  <source src="demos/demo_video_all_features.mov" type="video/mp4">
-</video>
+https://github.com/Candyzorua/floral_rain/assets/75513525/7537434f-77ec-4e11-9b87-d46cda62233b
 
-##### Gameplay
-<video width="320" height="240" controls>
-  <source src="demos/demo_video_in_game.mov" type="video/mp4">
-</video>
+##### Main gameplay
+https://github.com/Candyzorua/floral_rain/assets/75513525/f2b3fe44-b0d0-4241-b82a-2079cdf88a70
 
 #### Start Game Page
 <p float="left">
@@ -50,6 +46,10 @@ Taken using the iPhone 14 simulator.
 <p float="left">
   <img src="demos/demo_image_game_over.png" width="100" />
 </p>
+
+## Installation
+- Currently, the game only functions if the user runs the [backend API](https://github.com/Candyzorua/translator-server) and MongoDB server. Currently working to integrate Firebase support.
+- If the backend API and MongoDB server are running, check that the port address is correct in http_service.dart. Then, run the Flutter app on an Android or iOS simulator.
 
 ## Progress Log
 
