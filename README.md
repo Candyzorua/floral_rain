@@ -17,7 +17,17 @@ Please find the repo for the backend API [here](https://github.com/Candyzorua/tr
 ## Visuals
 
 #### Gameplay demos
+Taken using the iPhone 14 simulator.
 
+##### All features
+<video width="320" height="240" controls>
+  <source src="demos/demo_video_all_features.mov" type="video/mp4">
+</video>
+
+##### Gameplay
+<video width="320" height="240" controls>
+  <source src="demos/demo_video_in_game.mov" type="video/mp4">
+</video>
 
 #### Start Game Page
 <p float="left">
@@ -41,9 +51,22 @@ Please find the repo for the backend API [here](https://github.com/Candyzorua/tr
   <img src="demos/demo_image_game_over.png" width="100" />
 </p>
 
+## Progress Log
+
+#### Completed
+- [24/8/2023] Completed main gameplay functionality. Data persistence is not implemented, mock data is being used in stats page.
+
+#### In Progress
+- Implement data persistence.
+- Move backend from Express+MongoDB to a cloud-based solution like Google Firebase.
+- Clean dictionary data so all pinyin can be rendered properly.
+- Implement settings page and allow users to adjust time limit etc.
+
+
 ## Attributions
 - Sakura bridge image from **Yuliya Pauliukevich** on Vecteezy.
 - Falling sakura flowers image from **Freepik**.
+- Chinese dictionary data from [CC-CEDICT](https://www.mdbg.net/chinese/dictionary?page=cedict).
 
 
 
