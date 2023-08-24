@@ -20,14 +20,10 @@ Please find the repo for the backend API [here](https://github.com/Candyzorua/tr
 Taken using the iPhone 14 simulator.
 
 ##### All features
-<video width="320" height="240" controls>
-  <source src="demos/demo_video_all_features.mov" type="video/mp4">
-</video>
+https://github.com/Candyzorua/floral_rain/assets/75513525/7537434f-77ec-4e11-9b87-d46cda62233b
 
-##### Gameplay
-<video width="320" height="240" controls>
-  <source src="demos/demo_video_in_game.mov" type="video/mp4">
-</video>
+##### Main gameplay
+https://github.com/Candyzorua/floral_rain/assets/75513525/f2b3fe44-b0d0-4241-b82a-2079cdf88a70
 
 #### Start Game Page
 <p float="left">
