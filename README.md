@@ -47,7 +47,7 @@ https://github.com/Candyzorua/floral_rain/assets/75513525/f2b3fe44-b0d0-4241-b82
   <img src="demos/demo_image_game_over.png" width="100" />
 </p>
 
-## Running the app
+## Installation
 - Currently, the game only functions if the user runs the [backend API](https://github.com/Candyzorua/translator-server) and MongoDB server. Currently working to integrate Firebase support.
 - If the backend API and MongoDB server are running, check that the port address is correct in http_service.dart. Then, run the Flutter app on an Android or iOS simulator.
 
