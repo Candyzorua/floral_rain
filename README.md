@@ -1,16 +1,49 @@
-# floral_rain
+# Floral Rain
 
-A new Flutter project.
+A Mandarin word game for Android and iOS designed to help Mandarin learners grow their vocabulary and improve their pinyin in a fun way.
 
-## Getting Started
+Players chain phrases containing different words with identical pinyin to score points alongside a ticking timer. Successfully submitting a phrase refreshes the timer. To make things exciting, longer phrases grant exponentially more points!
 
-This project is a starting point for a Flutter application.
+Please find the repo for the backend API [here](https://github.com/Candyzorua/translator-server).
 
-A few resources to get you started if this is your first Flutter project:
+## Core Libraries
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [Flutter](https://flutter.dev/), frontend
+- [Riverpod](https://riverpod.dev/), state management
+- [Express](https://expressjs.com/), backend API
+- [MongoDB](https://www.mongodb.com/), data management
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Visuals
+
+#### Gameplay demos
+
+
+#### Start Game Page
+<p float="left">
+  <img src="demos/demo_image_start_game.png" width="100" />
+</p>
+
+#### Stats Page
+<p float="left">
+  <img src="demos/demo_image_stats_page.png" width="100" />
+</p>
+
+#### In-game Page
+<p float="left">
+  <img src="demos/demo_image_in_game_keyboard.png" width="100" />
+  <img src="demos/demo_image_in_game_pinyin_not_matching.png" width="100" />
+  <img src="demos/demo_image_in_game_word_repeated.png" width="100" />
+</p>
+
+#### Game Over Page
+<p float="left">
+  <img src="demos/demo_image_game_over.png" width="100" />
+</p>
+
+## Attributions
+- Sakura bridge image from **Yuliya Pauliukevich** on Vecteezy.
+- Falling sakura flowers image from **Freepik**.
+
+
+
