@@ -16,9 +16,13 @@ class FloralTimer extends ConsumerStatefulWidget {
 
 class _FloralTimerState extends ConsumerState<FloralTimer> {
   // timer
+  static const maxSeconds = TIME_LIMIT_SECONDS;
   int seconds = maxSeconds;
   Timer? timer;
-  static const maxSeconds = TIME_LIMIT_SECONDS;
+
+  _FloralTimerState() {
+    _startTimer();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -40,6 +40,9 @@ dependencies:
   http: ^0.13.6
   riverpod: ^2.3.7
   flutter_riverpod: ^2.3.7
+  isar: ^3.1.0+1
+  isar_flutter_libs: ^3.1.0+1
+  path_provider: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +56,8 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_native_splash: ^2.0.1+1
   test: ^1.24.1
+  isar_generator: ^3.1.0+1
+  build_runner: ^2.4.6
 
 flutter_native_splash:
   color: "#5DB075"
@@ -66,6 +71,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/dict/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

@@ -1,6 +1,7 @@
-import 'package:floral_rain/models/phrase_item.dart';
 import 'package:floral_rain/state/game_state.dart';
 import 'package:flutter/material.dart';
+
+import 'entities/phrase_isar.dart';
 
 // background color for entire app
 Color BGCOLOR = Colors.white;
@@ -50,7 +51,7 @@ const TextStyle(fontSize: 28, fontWeight: FontWeight.w700, fontFamily: 'ZenKakuG
 TextStyle GAME_OVER_LIGHT_TEXT_STYLE =
 const TextStyle(fontSize: 23, fontWeight: FontWeight.w400, fontFamily: 'ZenKakuGothicAntique', color: Colors.white);
 
-PhraseItem INITIAL_PHRASE_ITEM = const PhraseItem(definitions: [], simplified: "", traditional: "", pinyin: "", id: "");
+PhraseIsar INITIAL_PHRASE_ITEM = PhraseIsar(definitions: [], simplified: "", traditional: "", pinyin: "");
 GameState INITIAL_GAME_STATE = GameState(previous: INITIAL_PHRASE_ITEM, score: 0, error: null);
 
 // game settings
