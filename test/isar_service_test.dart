@@ -1,50 +1,47 @@
 
-import 'package:floral_rain/models/phrase_item.dart';
-import 'package:floral_rain/services/http_service.dart';
+import 'package:floral_rain/entities/phrase_isar.dart';
+import 'package:floral_rain/helpers/phrase_checks.dart';
+import 'package:floral_rain/services/isar_service.dart';
 import 'package:floral_rain/state/game_state.dart';
 import 'package:test/test.dart';
 
-const PhraseItem testPhraseItem = PhraseItem(
+PhraseIsar testPhraseItem = PhraseIsar(
     definitions: ["testdef", "testdef2"],
     simplified: '美',
     traditional: '美',
-    pinyin: 'měi',
-    id: 'test');
+    pinyin: 'měi');
 
-const PhraseItem testPhraseItem2 = PhraseItem(
+PhraseIsar testPhraseItem2 = PhraseIsar(
     definitions: ["testdef", "testdef2"],
     simplified: '美妙',
     traditional: '美妙',
-    pinyin: 'měi miào',
-    id: 'test');
+    pinyin: 'měi miào');
 
-const PhraseItem testPhraseItem3 = PhraseItem(
+PhraseIsar testPhraseItem3 = PhraseIsar(
     definitions: ["testdef", "testdef2"],
     simplified: '皱眉',
     traditional: '皱眉',
-    pinyin: 'zhòu méi',
-    id: 'test');
+    pinyin: 'zhòu méi');
 
-const PhraseItem testPhraseItem4 = PhraseItem(
+PhraseIsar testPhraseItem4 = PhraseIsar(
     definitions: ["testdef", "testdef2"],
     simplified: '庙堂',
     traditional: '庙堂',
-    pinyin: 'miào táng',
-    id: 'test');
+    pinyin: 'miào táng');
 
-const GameState initialGameState = GameState(previous: testPhraseItem, score: 0, error: null);
+GameState initialGameState = GameState(previous: testPhraseItem, score: 0, error: null);
 
 void main() {
-  final httpService = HttpService();
+  final isarService = IsarService();
 
   test('getPhrase should return correct value', () async {
-    GameState result = await httpService.getPhraseItem("每天", "simplified", initialGameState);
+    GameState result = await isarService.getPhraseItem("每天", "simplified", initialGameState);
     expect(result.score, 4);
   });
 
   test('getPhrase should return null', () async {
     try {
-      await httpService.getPhraseItem(
+      await isarService.getPhraseItem(
           "test", "simplified", initialGameState);
       fail('expected error');
     } catch(e) {
@@ -54,8 +51,7 @@ void main() {
 
   test('game state should be updated', () async {
     try {
-      GameState newGameState = await httpService.getRandom(
-          "simplified", initialGameState);
+      GameState newGameState = await isarService.getRandom(initialGameState);
       expect(newGameState.previous.simplified != initialGameState.previous.simplified, true);
     } catch(e) {
       fail("should not have error");
@@ -63,18 +59,18 @@ void main() {
   });
 
   test('pinyin should overlap', () async {
-    expect(httpService.isPinyinOverlap([testPhraseItem, testPhraseItem2]), true);
+    expect(PhraseChecks.isPinyinOverlap([testPhraseItem, testPhraseItem2]), true);
   });
 
   test('pinyin should not overlap', () async {
-    expect(httpService.isPinyinOverlap([testPhraseItem2, testPhraseItem3]), false);
+    expect(PhraseChecks.isPinyinOverlap([testPhraseItem2, testPhraseItem3]), false);
   });
 
   test('words should overlap', () async {
-    expect(httpService.isWordsOverlap([testPhraseItem, testPhraseItem2]), true);
+    expect(PhraseChecks.isWordsOverlap([testPhraseItem, testPhraseItem2]), true);
   });
 
   test('words should not overlap', () async {
-    expect(httpService.isWordsOverlap([testPhraseItem2, testPhraseItem3]), false);
+    expect(PhraseChecks.isWordsOverlap([testPhraseItem2, testPhraseItem3]), false);
   });
 }
