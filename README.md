@@ -10,8 +10,7 @@ Please find the repo for the backend API [here](https://github.com/Candyzorua/tr
 
 - [Flutter](https://flutter.dev/), frontend
 - [Riverpod](https://riverpod.dev/), state management
-- [Express](https://expressjs.com/), backend API
-- [MongoDB](https://www.mongodb.com/), data management
+- [Isar](https://pub.dev/packages/isar), local NoSQL database
 
 
 ## Visuals
@@ -48,19 +47,21 @@ https://github.com/Candyzorua/floral_rain/assets/75513525/f2b3fe44-b0d0-4241-b82
 </p>
 
 ## Installation
-- Currently, the game only functions if the user runs the [backend API](https://github.com/Candyzorua/translator-server) and MongoDB server. Currently working to integrate Firebase support.
-- If the backend API and MongoDB server are running, check that the port address is correct in http_service.dart. Then, run the Flutter app on an Android or iOS simulator.
+```
+flutter run 
+```
+- Working on uploading the app to Google Play Store. 
 
 ## Progress Log
 
 #### Completed
 - [24/8/2023] Completed main gameplay functionality. Data persistence is not implemented, mock data is being used in stats page.
+- [8/9/2023] Moved backend to Isar after trying out Google Firebase and Express+MongoDB backends.
 
 #### In Progress
-- Implement data persistence.
-- Move backend from Express+MongoDB to a cloud-based solution like Google Firebase.
-- Clean dictionary data so all pinyin can be rendered properly.
+- Implement stats page.
 - Implement settings page and allow users to adjust time limit etc.
+- Write pinyin parsing Dart library.
 
 
 ## Attributions

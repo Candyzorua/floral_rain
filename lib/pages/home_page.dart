@@ -1,8 +1,10 @@
+import 'package:floral_rain/pages/rules_page.dart';
 import 'package:floral_rain/pages/start_game_page.dart';
 import 'package:floral_rain/pages/stats_page.dart';
 import 'package:flutter/material.dart';
 import '../components/bottom_nav_bar.dart';
 import '../const.dart';
+import '../services/isar_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,10 +14,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final isarService = IsarService();
   int _selectedIndex = 1;
 
   // pages
-  final List _pages = [const StatsPage(), const StartGamePage()];
+  final List _pages = [const StatsPage(), const StartGamePage(), const RulesPage()];
 
   @override
   Widget build(BuildContext context) {

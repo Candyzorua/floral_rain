@@ -669,78 +669,8 @@ PODS:
   - Flutter (1.0.0)
   - flutter_native_splash (0.0.1):
     - Flutter
-  - GoogleUtilities/Environment (7.11.5):
-    - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/Logger (7.11.5):
-    - GoogleUtilities/Environment
-  - "GoogleUtilities/NSData+zlib (7.11.5)"
-  - "gRPC-C++ (1.50.1)":
-    - "gRPC-C++/Implementation (= 1.50.1)"
-    - "gRPC-C++/Interface (= 1.50.1)"
-  - "gRPC-C++/Implementation (1.50.1)":
-    - abseil/base/base (= 1.20220623.0)
-    - abseil/base/core_headers (= 1.20220623.0)
-    - abseil/cleanup/cleanup (= 1.20220623.0)
-    - abseil/container/flat_hash_map (= 1.20220623.0)
-    - abseil/container/flat_hash_set (= 1.20220623.0)
-    - abseil/container/inlined_vector (= 1.20220623.0)
-    - abseil/functional/any_invocable (= 1.20220623.0)
-    - abseil/functional/bind_front (= 1.20220623.0)
-    - abseil/functional/function_ref (= 1.20220623.0)
-    - abseil/hash/hash (= 1.20220623.0)
-    - abseil/memory/memory (= 1.20220623.0)
-    - abseil/meta/type_traits (= 1.20220623.0)
-    - abseil/random/random (= 1.20220623.0)
-    - abseil/status/status (= 1.20220623.0)
-    - abseil/status/statusor (= 1.20220623.0)
-    - abseil/strings/cord (= 1.20220623.0)
-    - abseil/strings/str_format (= 1.20220623.0)
-    - abseil/strings/strings (= 1.20220623.0)
-    - abseil/synchronization/synchronization (= 1.20220623.0)
-    - abseil/time/time (= 1.20220623.0)
-    - abseil/types/optional (= 1.20220623.0)
-    - abseil/types/span (= 1.20220623.0)
-    - abseil/types/variant (= 1.20220623.0)
-    - abseil/utility/utility (= 1.20220623.0)
-    - "gRPC-C++/Interface (= 1.50.1)"
-    - gRPC-Core (= 1.50.1)
-  - "gRPC-C++/Interface (1.50.1)"
-  - gRPC-Core (1.50.1):
-    - gRPC-Core/Implementation (= 1.50.1)
-    - gRPC-Core/Interface (= 1.50.1)
-  - gRPC-Core/Implementation (1.50.1):
-    - abseil/base/base (= 1.20220623.0)
-    - abseil/base/core_headers (= 1.20220623.0)
-    - abseil/container/flat_hash_map (= 1.20220623.0)
-    - abseil/container/flat_hash_set (= 1.20220623.0)
-    - abseil/container/inlined_vector (= 1.20220623.0)
-    - abseil/functional/any_invocable (= 1.20220623.0)
-    - abseil/functional/bind_front (= 1.20220623.0)
-    - abseil/functional/function_ref (= 1.20220623.0)
-    - abseil/hash/hash (= 1.20220623.0)
-    - abseil/memory/memory (= 1.20220623.0)
-    - abseil/meta/type_traits (= 1.20220623.0)
-    - abseil/random/random (= 1.20220623.0)
-    - abseil/status/status (= 1.20220623.0)
-    - abseil/status/statusor (= 1.20220623.0)
-    - abseil/strings/cord (= 1.20220623.0)
-    - abseil/strings/str_format (= 1.20220623.0)
-    - abseil/strings/strings (= 1.20220623.0)
-    - abseil/synchronization/synchronization (= 1.20220623.0)
-    - abseil/time/time (= 1.20220623.0)
-    - abseil/types/optional (= 1.20220623.0)
-    - abseil/types/span (= 1.20220623.0)
-    - abseil/types/variant (= 1.20220623.0)
-    - abseil/utility/utility (= 1.20220623.0)
-    - BoringSSL-GRPC (= 0.0.24)
-    - gRPC-Core/Interface (= 1.50.1)
-  - gRPC-Core/Interface (1.50.1)
-  - leveldb-library (1.22.2)
-  - nanopb (2.30909.0):
-    - nanopb/decode (= 2.30909.0)
-    - nanopb/encode (= 2.30909.0)
-  - nanopb/decode (2.30909.0)
-  - nanopb/encode (2.30909.0)
+  - isar_flutter_libs (1.0.0):
+    - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -754,6 +684,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
+  - isar_flutter_libs (from `.symlinks/plugins/isar_flutter_libs/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
 
@@ -781,6 +712,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_native_splash:
     :path: ".symlinks/plugins/flutter_native_splash/ios"
+  isar_flutter_libs:
+    :path: ".symlinks/plugins/isar_flutter_libs/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   shared_preferences_foundation:
@@ -797,11 +730,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: f94c9541515fa4a49af52269bbc50349009424b4
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
-  GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
-  "gRPC-C++": 0968bace703459fd3e5dcb0b2bed4c573dbff046
-  gRPC-Core: 17108291d84332196d3c8466b48f016fc17d816d
-  leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
-  nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
+  isar_flutter_libs: b69f437aeab9c521821c3f376198c4371fa21073
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126

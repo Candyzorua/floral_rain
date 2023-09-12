@@ -26,10 +26,14 @@ class _InGamePageState extends State<InGamePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Expanded(
-                flex: 4,
+                flex: 5,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: ReturnToHomePageButton(),
+                    ),
                     FloralTimer(),
                     ScoreCard(),
                   ],
@@ -43,9 +47,6 @@ class _InGamePageState extends State<InGamePage> {
                     const InvalidPhraseText(),
                   ],
                 )),
-            const Expanded(
-                flex: 2,
-                child: ReturnToHomePageButton())
           ],
         ),
       ),

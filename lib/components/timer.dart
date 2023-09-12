@@ -16,9 +16,13 @@ class FloralTimer extends ConsumerStatefulWidget {
 
 class _FloralTimerState extends ConsumerState<FloralTimer> {
   // timer
+  static const maxSeconds = TIME_LIMIT_SECONDS;
   int seconds = maxSeconds;
   Timer? timer;
-  static const maxSeconds = TIME_LIMIT_SECONDS;
+
+  _FloralTimerState() {
+    _startTimer();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,12 +78,14 @@ class _FloralTimerState extends ConsumerState<FloralTimer> {
   }
 
   void _navigateToGameOverPage() {
-    _stopTimer();
     AsyncValue<GameState> currGameState = ref.read(gameNotifierProvider);
-    currGameState.whenData((value) => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => GameOverPage(score: value.score)),
-        ));
+    currGameState.whenData((value) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => GameOverPage(score: value.score)),
+      );
+    });
+    ref.read(gameNotifierProvider.notifier).stopGameState();
   }
 }
