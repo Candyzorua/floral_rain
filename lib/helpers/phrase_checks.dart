@@ -30,4 +30,23 @@ class PhraseChecks {
     int phraseLength = getPhraseLength(pi);
     return phraseLength * phraseLength;
   }
+
+  /// Helper to determine if user has used word before
+  static bool hasUsedWordsBefore(PhraseIsar pi, List<String> wordList, String mode) {
+    if (mode == "simplified") {
+      for (var w in wordList) {
+        if (w == pi.simplified) {
+          return true;
+        }
+      }
+    } else {
+      for (var w in wordList) {
+        if (w == pi.traditional) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
 }

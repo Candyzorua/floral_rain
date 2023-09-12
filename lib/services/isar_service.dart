@@ -58,7 +58,21 @@ class IsarService {
       return Future.error('Pinyin not matching.');
     }
 
+    // check if have used phrase before
+    if (PhraseChecks.hasUsedWordsBefore(res, gameState.wordList, type)) {
+      return Future.error('Phrase repeated.');
+    }
+
+    // update game state
+    List<String> newWordList = [...gameState.wordList];
+    if (type == "simplified") {
+      newWordList.add(res.simplified);
+    } else {
+      newWordList.add(res.traditional);
+    }
+
     return gameState.copyWith(
+        wordList: newWordList,
         previous: res,
         score: gameState.score + PhraseChecks.calcScoreToAdd(res),
         error: null);

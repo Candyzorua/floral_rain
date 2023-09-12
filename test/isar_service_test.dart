@@ -33,7 +33,7 @@ PhraseIsar testPhraseItem4 = PhraseIsar(
     traditional: '庙堂',
     pinyin: 'miào táng');
 
-GameState initialGameState = GameState(previous: testPhraseItem, score: 0, error: null);
+GameState initialGameState = GameState(previous: testPhraseItem, score: 0, error: null, wordList: const []);
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

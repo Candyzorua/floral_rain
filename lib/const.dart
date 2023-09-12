@@ -52,7 +52,7 @@ TextStyle GAME_OVER_LIGHT_TEXT_STYLE =
 const TextStyle(fontSize: 23, fontWeight: FontWeight.w400, fontFamily: 'ZenKakuGothicAntique', color: Colors.white);
 
 PhraseIsar INITIAL_PHRASE_ITEM = PhraseIsar(definitions: [], simplified: "", traditional: "", pinyin: "");
-GameState INITIAL_GAME_STATE = GameState(previous: INITIAL_PHRASE_ITEM, score: 0, error: null);
+GameState INITIAL_GAME_STATE = GameState(previous: INITIAL_PHRASE_ITEM, score: 0, error: null, wordList: const []);
 
 // game settings
 const MIN_PHRASE_LENGTH = 2;
