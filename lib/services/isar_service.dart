@@ -102,7 +102,7 @@ class IsarService {
   }
 
   /// Update stats
-  Future<void> updateStats(int score) async {
+  Future<void> updateStats(int score, String longestOfTheRound) async {
     final isar = await db;
     isar.writeTxn(() async {
 
@@ -113,6 +113,14 @@ class IsarService {
       if (score > highestScoreInt) {
         highestScore.strValue = score.toString();
         await isar.statsIsars.put(highestScore);
+      }
+
+      // update longest word
+      StatsIsar? longestWord = await isar.statsIsars.get(2);
+
+      if (longestOfTheRound.length > longestWord!.strValue!.length) {
+        longestWord.strValue = longestOfTheRound;
+        await isar.statsIsars.put(longestWord);
       }
 
       // update number of rounds

@@ -38,7 +38,16 @@ class GameNotifier extends StateNotifier<AsyncValue<GameState>> {
 
   // stop timer and revert to initial game state
   Future<void> stopGameState() async {
-    isarService.updateStats(state.value!.score);
+
+    // extract the longest word of that round
+    String longest = "";
+    for (var w in state.value!.wordList) {
+      if (w.length > longest.length) {
+        longest = w;
+      }
+    }
+
+    isarService.updateStats(state.value!.score, longest);
     state = const AsyncValue.loading();
     state = AsyncValue.data(INITIAL_GAME_STATE.copyWith(stopTimer: true));
   }
