@@ -78,12 +78,14 @@ class _FloralTimerState extends ConsumerState<FloralTimer> {
   }
 
   void _navigateToGameOverPage() {
-    _stopTimer();
     AsyncValue<GameState> currGameState = ref.read(gameNotifierProvider);
-    currGameState.whenData((value) => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => GameOverPage(score: value.score)),
-        ));
+    currGameState.whenData((value) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => GameOverPage(score: value.score)),
+      );
+    });
+    ref.read(gameNotifierProvider.notifier).stopGameState();
   }
 }

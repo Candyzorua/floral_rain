@@ -57,3 +57,7 @@ GameState INITIAL_GAME_STATE = GameState(previous: INITIAL_PHRASE_ITEM, score: 0
 // game settings
 const MIN_PHRASE_LENGTH = 2;
 const TIME_LIMIT_SECONDS = 20;
+
+// stats
+const STATS_CATEGORIES = ['highest_score', 'longest_word', 'rounds_played'];
+

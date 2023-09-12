@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:floral_rain/entities/phrase_isar.dart';
+import 'package:floral_rain/entities/stats_isar.dart';
 import 'package:flutter/services.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
@@ -18,6 +19,10 @@ class IsarService {
     db = openDb();
     initializeDb();
   }
+
+  /**
+   * PHRASES
+   */
 
   /// Checks the phrase and returns the updated GameState.
   /// Throws error if word phrase does not exist
@@ -72,6 +77,39 @@ class IsarService {
   /// from [min], inclusive, to [max], exclusive.
   int next(int min, int max) => min + _random.nextInt(max - min);
 
+  /**
+   * STATS
+   */
+
+  /// Get a stream for the stat corresponding to the given index
+  Future<Stream<StatsIsar?>> getStatStream(int id) async {
+    final isar = await db;
+    return isar.statsIsars.watchObject(id, fireImmediately: true);
+  }
+
+  /// Update stats
+  Future<void> updateStats(int score) async {
+    final isar = await db;
+    isar.writeTxn(() async {
+
+      // update highest score
+      StatsIsar? highestScore = await isar.statsIsars.get(1);
+      int highestScoreInt = int.parse(highestScore!.strValue!);
+
+      if (score > highestScoreInt) {
+        highestScore.strValue = score.toString();
+        await isar.statsIsars.put(highestScore);
+      }
+
+      // update number of rounds
+      StatsIsar? roundsPlayed = await isar.statsIsars.get(3);
+      int roundsPlayedInt = int.parse(roundsPlayed!.strValue!);
+      roundsPlayed.strValue = (roundsPlayedInt + 1).toString();
+      await isar.statsIsars.put(roundsPlayed);
+
+    });
+  }
+
   ///
   /// All methods below are for init purposes
   ///
@@ -83,12 +121,13 @@ class IsarService {
   }
 
   /// Load all phrases from json into db if not already there
+  /// Initialize stats to none if not already there
   /// If already there do nothing
   Future<void> initializeDb() async {
     final isar = await db;
-    final count = await isar.phraseIsars.count();
+    final phraseCount = await isar.phraseIsars.count();
 
-    if (count == 0) {
+    if (phraseCount == 0) {
       final String response =
       await rootBundle.loadString('assets/dict/cedict.json');
       final data = await json.decode(response);
@@ -98,12 +137,25 @@ class IsarService {
         isar.writeTxnSync<int>(() => isar.phraseIsars.putSync(newPhrase));
       }
     }
+
+    final statsCount = await isar.statsIsars.count();
+    if (statsCount == 0) {
+      for (var stat in STATS_CATEGORIES) {
+        StatsIsar newStat;
+        if (stat == "longest_word") {
+          newStat = StatsIsar(name: stat, strValue: '-');
+        } else {
+          newStat = StatsIsar(name: stat, strValue: '0');
+        }
+        isar.writeTxnSync<int>(() => isar.statsIsars.putSync(newStat));
+      }
+    }
   }
 
   Future<Isar> openDb() async {
     final dir = await getApplicationSupportDirectory();
     if (Isar.instanceNames.isEmpty) {
-      return await Isar.open([PhraseIsarSchema],
+      return await Isar.open([PhraseIsarSchema, StatsIsarSchema],
           inspector: true, directory: dir.path);
     }
 

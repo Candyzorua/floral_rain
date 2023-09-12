@@ -1,9 +1,13 @@
 
+import 'dart:ui';
+
 import 'package:floral_rain/entities/phrase_isar.dart';
 import 'package:floral_rain/helpers/phrase_checks.dart';
 import 'package:floral_rain/services/isar_service.dart';
 import 'package:floral_rain/state/game_state.dart';
-import 'package:test/test.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:isar/isar.dart';
 
 PhraseIsar testPhraseItem = PhraseIsar(
     definitions: ["testdef", "testdef2"],
@@ -31,8 +35,12 @@ PhraseIsar testPhraseItem4 = PhraseIsar(
 
 GameState initialGameState = GameState(previous: testPhraseItem, score: 0, error: null);
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  DartPluginRegistrant.ensureInitialized();
+  await Isar.initializeIsarCore(download: true);
   final isarService = IsarService();
+
 
   test('getPhrase should return correct value', () async {
     GameState result = await isarService.getPhraseItem("每天", "simplified", initialGameState);

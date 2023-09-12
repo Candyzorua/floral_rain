@@ -1,5 +1,8 @@
 import 'package:floral_rain/const.dart';
+import 'package:floral_rain/services/isar_service.dart';
 import 'package:flutter/material.dart';
+
+import '../entities/stats_isar.dart';
 
 class StatsPage extends StatefulWidget {
   const StatsPage({super.key});
@@ -9,7 +12,6 @@ class StatsPage extends StatefulWidget {
 }
 
 class _StatsPageState extends State<StatsPage> {
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -31,14 +33,14 @@ class _StatsPageState extends State<StatsPage> {
               padding: const EdgeInsets.all(25.0),
               child: ListView(
                 children: [
-                  const StatsCard('highest score', '141',
-                      Icons.trending_up_rounded, Colors.pink),
+                  StatsCard('highest score', Icons.trending_up_rounded,
+                      Colors.pink, 1),
                   const SizedBox(height: 10),
-                  const StatsCard('longest word', '爱不释手', Icons.lightbulb_rounded,
-                      Colors.pinkAccent),
+                  StatsCard('longest word', Icons.lightbulb_rounded,
+                      Colors.pinkAccent, 2),
                   const SizedBox(height: 10),
-                  StatsCard('rounds played', '20', Icons.av_timer_rounded,
-                      Colors.pinkAccent[100]!),
+                  StatsCard('rounds played', Icons.av_timer_rounded,
+                      Colors.pinkAccent[100]!, 3),
                 ],
               ),
             ),
@@ -50,35 +52,58 @@ class _StatsPageState extends State<StatsPage> {
 }
 
 class StatsCard extends StatelessWidget {
-  const StatsCard(this.title, this.subtitle, this.icon, this.bgColor, {super.key});
+  StatsCard(this.title, this.icon, this.bgColor, this.id, {super.key});
 
   final String title;
-  final String subtitle;
   final IconData icon;
   final Color bgColor;
+  final int id;
+  final IsarService isarService = IsarService();
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-    elevation: 0,
-    color: bgColor,
-    shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(25),
-        )),
-    child: ListTile(
-      iconColor: Colors.white,
-      contentPadding:
-      const EdgeInsets.symmetric(vertical: 15, horizontal: 20.0),
-      leading: Icon(icon),
-      title: Text(
-        title,
-        style: STATS_TITLE_TEXT_STYLE,
-      ),
-      subtitle: Text(
-        subtitle,
-        style: STATS_SUBTITLE_TEXT_STYLE,
-      ),
-    ));
+    return FutureBuilder(
+        future: isarService.getStatStream(id),
+        builder: (BuildContext context, AsyncSnapshot<Stream<StatsIsar?>> snapshot) {
+          if (!snapshot.hasData) {
+            // while data is loading:
+            return Card(
+              elevation: 0,
+              color: bgColor,
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(25))),
+              child: const CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            );
+          } else {
+            return StreamBuilder<StatsIsar?>(
+                stream: snapshot.data,
+                builder:
+                    (BuildContext context, AsyncSnapshot<StatsIsar?> snapshot) {
+                  return Card(
+                      elevation: 0,
+                      color: bgColor,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                        Radius.circular(25),
+                      )),
+                      child: ListTile(
+                        iconColor: Colors.white,
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 15, horizontal: 20.0),
+                        leading: Icon(icon),
+                        title: Text(
+                          title,
+                          style: STATS_TITLE_TEXT_STYLE,
+                        ),
+                        subtitle: Text(
+                          snapshot.data?.strValue ?? "-",
+                          style: STATS_SUBTITLE_TEXT_STYLE,
+                        ),
+                      ));
+                });
+          }
+        });
   }
 }
