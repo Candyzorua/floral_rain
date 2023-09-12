@@ -34,10 +34,10 @@ class ShowBottomSheetExample extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Expanded(
-                  flex: 11,
+                    flex: 7,
                     child: Image.asset('assets/floral_rain_logo_black.png')),
                 Expanded(
-                  flex: 6,
+                  flex: 4,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(30),
                     child: Stack(
@@ -93,17 +93,14 @@ class StartGameButton extends ConsumerWidget {
     return TextButton(
       style: TextButton.styleFrom(
         foregroundColor: Colors.white,
-        padding:
-        const EdgeInsets.fromLTRB(60.0, 15.0, 60.0, 20.0),
+        padding: const EdgeInsets.fromLTRB(60.0, 15.0, 60.0, 20.0),
         textStyle: const TextStyle(fontSize: 20),
       ),
       onPressed: () {
         Navigator.of(context).pushNamed('/in-game');
         ref.read(gameNotifierProvider.notifier).initialize();
       },
-      child: Text('start game',
-          style: START_GAME_LARGE_TEXT_STYLE),
+      child: Text('start game', style: START_GAME_LARGE_TEXT_STYLE),
     );
   }
 }
-

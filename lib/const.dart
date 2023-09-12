@@ -1,7 +1,7 @@
 import 'package:floral_rain/state/game_state.dart';
 import 'package:flutter/material.dart';
-
 import 'entities/phrase_isar.dart';
+import 'entities/rules.dart';
 
 // background color for entire app
 Color BGCOLOR = Colors.white;
@@ -20,11 +20,6 @@ const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, fontFamily: 'ZenKakuG
 TextStyle START_GAME_LARGE_TEXT_STYLE =
 const TextStyle(fontSize: 25, fontWeight: FontWeight.w700, fontFamily: 'ZenKakuGothicAntique');
 
-// stats page text styles
-TextStyle STATS_SMALL_TEXT_STYLE =
-const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, fontFamily: 'ZenKakuGothicAntique');
-TextStyle STATS_LARGE_TEXT_STYLE =
-const TextStyle(fontSize: 25, fontWeight: FontWeight.w700, fontFamily: 'ZenKakuGothicAntique');
 
 TextStyle STATS_TITLE_TEXT_STYLE =
 const TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.w400, fontFamily: 'ZenKakuGothicAntique');
@@ -58,6 +53,26 @@ GameState INITIAL_GAME_STATE = GameState(previous: INITIAL_PHRASE_ITEM, score: 0
 const MIN_PHRASE_LENGTH = 2;
 const TIME_LIMIT_SECONDS = 20;
 
+/// STATS
 // stats
 const STATS_CATEGORIES = ['highest_score', 'longest_word', 'rounds_played'];
 
+// stats page text styles
+TextStyle STATS_SMALL_TEXT_STYLE =
+const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, fontFamily: 'ZenKakuGothicAntique');
+TextStyle STATS_LARGE_TEXT_STYLE =
+const TextStyle(fontSize: 25, fontWeight: FontWeight.w700, fontFamily: 'ZenKakuGothicAntique');
+
+/// RULES
+// rules
+Rules CHAIN_PHRASE_RULE = Rules(title: 'Chain phrases', body: 'Submit a phrase with at least one character with repeated pinyin from the previous phrase to reset the timer.', images: ['assets/rules/fr_example_chain.png']);
+Rules LONGER_IS_BETTER_RULE = Rules(title: 'Longer is better', body: 'Longer phrases score more points! One-word phrases are disallowed.', images: ['assets/rules/fr_example_too_short.png']);
+Rules DRY_RULE = Rules(title: 'D.R.Y.', body: "Don't repeat characters from the previous phrase, and don't use exact phrases you've already used!", images: ['assets/rules/fr_example_dry.png', 'assets/rules/fr_example_dry_word.png']);
+
+// rules page text styles
+TextStyle RULES_SMALL_TEXT_STYLE =
+const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, fontFamily: 'ZenKakuGothicAntique');
+TextStyle RULES_LARGE_TEXT_STYLE =
+const TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: 'ZenKakuGothicAntique');
+TextStyle RULES_TITLE_TEXT_STYLE =
+const TextStyle(fontSize: 25, fontWeight: FontWeight.w700, fontFamily: 'ZenKakuGothicAntique');
