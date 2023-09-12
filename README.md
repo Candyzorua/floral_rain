@@ -4,14 +4,13 @@ A Mandarin word game for Android and iOS designed to help Mandarin learners grow
 
 Players chain phrases containing different words with identical pinyin to score points alongside a ticking timer. Successfully submitting a phrase refreshes the timer. To make things exciting, longer phrases grant more points!
 
-Please find the repo for the backend API [here](https://github.com/Candyzorua/translator-server).
+Currently unused backend API [here](https://github.com/Candyzorua/translator-server).
 
 ## Core Libraries
 
 - [Flutter](https://flutter.dev/), frontend
 - [Riverpod](https://riverpod.dev/), state management
 - [Isar](https://pub.dev/packages/isar), local NoSQL database
-
 
 ## Visuals
 
@@ -49,12 +48,13 @@ https://github.com/Candyzorua/floral_rain/assets/75513525/f2b3fe44-b0d0-4241-b82
 ## Installation
 ```
 flutter run 
-```
-- Working on uploading the app to Google Play Store. 
+``` 
+- Working on releasing to Google Play Store/TestFlight.
 
 ## Progress Log
 
 #### Completed
+- [12/9/2023] Finished v1.0.0. Implemented stats page, rules page, and data persistence for all pages.
 - [24/8/2023] Completed main gameplay functionality. Data persistence is not implemented, mock data is being used in stats page.
 - [8/9/2023] Moved backend to Isar after trying out Google Firebase and Express+MongoDB backends.
 
@@ -62,7 +62,6 @@ flutter run
 - Implement stats page.
 - Implement settings page and allow users to adjust time limit etc.
 - Write pinyin parsing Dart library.
-
 
 ## Attributions
 - Sakura bridge image from **Yuliya Pauliukevich** on Vecteezy.
